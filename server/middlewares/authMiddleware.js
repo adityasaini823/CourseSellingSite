@@ -13,7 +13,6 @@ const verifyAuth = async (req, res, next) => {
         if (!token) {
             return res.status(403).send('Token is missing');
         }
-
         try {
             const decoded = jwt.verify(token, secret);
             const id = decoded.id;

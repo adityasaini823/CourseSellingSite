@@ -11,7 +11,9 @@ router.get("/courses",verifyAuth,getAllCourses);
 
 router.get("/course/:id",verifyAuth,getCourse);
 
-router.delete("course/:id",verifyAuth,isAdmin,deleteCourse);
-router.post("course",verifyAuth,createCourse);
+router.delete("course/:id",verifyAuth,deleteCourse);
+
+router.post("course",verifyAuth,isAdmin,isInstructor,createCourse);
+router.put("/course/:id",verifyAuth,isAdmin,isInstructor,updateCourse);
 
 module.exports=router;
