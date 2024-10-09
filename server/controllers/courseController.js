@@ -4,6 +4,11 @@ const Course=require("../models/Course");
 
 const getAllCourses=async (req,res)=>{
     try {
+        const user=req.user;
+        if(!user){
+            const courses= await Course.find().select('title description category level thumbnail');
+            return res.status(200).json(courses);
+        }
     const courses=await Course.find();
     if(!courses){
         return res.status(404).json({message:"No courses found"});
@@ -13,8 +18,14 @@ const getAllCourses=async (req,res)=>{
         return res.status(500).json({message:"server error"});
      }
 }
+
 const getCourse=async (req,res)=>{
     try {
+        const user=req.user;
+        if(!user){
+            const course= await Course.findById(req.params.id).select('title description category level thumbnail');
+            return res.status(200).json(course);
+        }
         const course=await Course.findById(req.params.id);
         if(course){
             return res.status(200).json(course);
@@ -25,6 +36,7 @@ const getCourse=async (req,res)=>{
         return res.status(500).json({message:"server error"});
     }
 }
+
 const createCourse=async (req,res)=>{
     try{
         const course=new Course(req.body);
@@ -50,6 +62,9 @@ const updateCourse=async (req,res)=>{
 }
 const deleteCourse=async (req,res)=>{
     try{
+        if(!req.user && !req.user.role=="superAdmin"){
+            return res.status(401).json({message:"Unauthorized"});
+        }
         const courseId=req.params.id;
         const deletedCourse=await Course.findByIdAndDelete(courseId);
         if(deletedCourse){
