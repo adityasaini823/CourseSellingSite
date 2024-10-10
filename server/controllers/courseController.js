@@ -165,5 +165,5 @@ const deleteCourse=async (req,res)=>{
     }
 }
 
-
+y
 module.exports={getAllCourses,getCourse,createCourse,deleteCourse,updateCourse};

@@ -5,7 +5,7 @@ const app=express();
 
 const {getAllCourses,getCourse,createCourse,deleteCourse,updateCourse}=require('../controllers/courseController');
 const verifyAuth=require('../middlewares/authMiddleware');
-const { isAdmin,isInstructor,isUser } = require("../middlewares/roleMiddleware");
+const { isAdmin,isInstructor} = require("../middlewares/roleMiddleware");
 
 router.get("/courses",verifyAuth,getAllCourses);
 

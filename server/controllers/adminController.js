@@ -1,0 +1,3 @@
+const getAllUsers=()=>{
+}
+const deleteUser=()=>{}
