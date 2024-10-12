@@ -1,9 +1,9 @@
 require('dotenv').config(); 
+const secret= process.env.secret;
 const express=require('express');
 const jwt=require("jsonwebtoken");
 const app=express();
 const User=require("../models/User");
-const secret= process.env.secret;
 
 const verifyAuth = async (req, res, next) => {
     const authHeader = req.headers['authorization'];
@@ -15,8 +15,10 @@ const verifyAuth = async (req, res, next) => {
         }
         try {
             const decoded = jwt.verify(token, secret);
+            console.log(decoded);
             const id = decoded.id;
             const user = await User.findById(id);
+
             if (!user) {
                 return res.status(404).json({ msg: "User not authorized" });
             }

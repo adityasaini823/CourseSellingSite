@@ -35,10 +35,7 @@ const getCourse=async (req,res)=>{
     }catch(err){
         return res.status(500).json({message:"server error"});
     }
-}
-const { validationResult } = require('express-validator');
-const Course = require('../models/Course'); 
-
+} 
 const createCourse = async (req, res) => {
     try {
         const errors = validationResult(req);
@@ -164,6 +161,4 @@ const deleteCourse=async (req,res)=>{
         return res.status(500).json({message:"server error"});
     }
 }
-
-y
 module.exports={getAllCourses,getCourse,createCourse,deleteCourse,updateCourse};

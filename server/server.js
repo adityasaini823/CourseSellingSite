@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const courseRoutes=require('./routes/courseRoutes');
+const userRoutes=require('./routes/userRoutes');
 const cors=require('cors');
 // Load environment variables
 dotenv.config();
@@ -19,6 +20,7 @@ const User = require("./models/User");
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.use("/",courseRoutes);
+app.use("/",userRoutes);
 
 // Default route to check if the server is running
 // app.get("/", (req, res) => {
