@@ -1,7 +1,6 @@
 const express=require("express");
 
 const router = express.Router();
-const app=express();
 
 const {getAllCourses,getCourse,createCourse,deleteCourse,updateCourse}=require('../controllers/courseController');
 const verifyAuth=require('../middlewares/authMiddleware');

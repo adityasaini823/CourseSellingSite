@@ -2,22 +2,28 @@ const express=require("express");
 const app=express();
 const Course=require("../models/Course");
 const { body, validationResult } = require('express-validator');
-const getAllCourses=async (req,res)=>{
+const getAllCourses = async (req, res) => {
     try {
-        const user=req.user;
-        if(!user){
-            const courses= await Course.find().select('title description category level thumbnail');
-            return res.status(200).json(courses);
+        const { user } = req;  // This will be available if verifyAuth runs and attaches user to req
+        let courses;
+        if (user) {
+            // Authenticated user: Fetch full course details
+            courses = await Course.find();
+        } else {
+            // Non-authenticated user: Fetch limited course details
+            courses = await Course.find().select('title description category level thumbnail');
         }
-    const courses=await Course.find();
-    if(!courses){
-        return res.status(404).json({message:"No courses found"});
-    }
-    return res.status(200).json(courses);
+        if (!courses.length) {
+            return res.status(404).json({ message: "No courses found" });
+        }
+        
+        return res.status(200).json(courses);
+
     } catch (error) {
-        return res.status(500).json({message:"server error"});
-     }
+        return res.status(500).json({ message: "Server error" });
+    }
 }
+
 
 const getCourse=async (req,res)=>{
     try {

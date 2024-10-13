@@ -14,24 +14,16 @@ const verifyAuth = async (req, res, next) => {
             return res.status(403).send('Token is missing');
         }
         try {
-            const decoded = jwt.verify(token, secret);
-            console.log(decoded);
-            const id = decoded.id;
-            const user = await User.findById(id);
-
+            const decoded = jwt.verify(token, process.env.secret);
+            const user = await User.findById(decoded.id);
             if (!user) {
                 return res.status(404).json({ msg: "User not authorized" });
             }
-            req.user = user;
+            req.user = user; 
         } catch (err) {
-            return res.status(500).json({ err });
+            return res.status(500).json({ msg: "Invalid token", err });
         }
     }
-    // If no token or invalid user, skip authentication, let non-logged-in users continue
     next();
 };
-
-module.exports = { verifyAuth };
-
-
-module.exports=verifyAuth
+module.exports =  verifyAuth ;
