@@ -5,7 +5,7 @@ const { createUser, getUser,updateUser } = require('../controllers/userControlle
 const router=express.Router();
 
 
-router.get('/login',getUser);
+router.post('/login',getUser);
 router.post('/signup',createUser);
 
 router.put('/update/:id',verifyAuth,updateUser);    

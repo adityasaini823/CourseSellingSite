@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const courseRoutes=require('./routes/courseRoutes');
 const userRoutes=require('./routes/userRoutes');
 const adminRoutes=require('./routes/adminRoutes');
+// const instructorRoutes=require('./routes/instructorRoutes');
 const cors=require('cors');
 const app = express();
 const connectDB = require("./config/db");
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use("/course",courseRoutes);
 app.use("/users",userRoutes);
 app.use("/admins",adminRoutes);
+// app.use('/instructor',instructorRoutes);
 
 const PORT = process.env.PORT || 3000;
 console.log(`Server running on port ${PORT}`);

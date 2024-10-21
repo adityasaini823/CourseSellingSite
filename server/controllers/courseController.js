@@ -42,6 +42,7 @@ const getCourse=async (req,res)=>{
         return res.status(500).json({message:"server error"});
     }
 } 
+
 const createCourse = async (req, res) => {
     try {
         const errors = validationResult(req);
