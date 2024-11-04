@@ -8,24 +8,17 @@ const adminRoutes=require('./routes/adminRoutes');
 const cors=require('cors');
 const app = express();
 const connectDB = require("./config/db");
-// Load environment variables
 dotenv.config();
-// Connect to the database
 connectDB();
 
 app.use(cors());
-// Import models
-const Course = require("./models/Course");
-const User = require("./models/User");
 
-// Middleware to parse JSON bodies
 app.use(express.json());
 
 // Routes here
 app.use("/course",courseRoutes);
 app.use("/users",userRoutes);
 app.use("/admins",adminRoutes);
-// app.use('/instructor',instructorRoutes);
 
 const PORT = process.env.PORT || 3000;
 console.log(`Server running on port ${PORT}`);

@@ -33,7 +33,7 @@ function Login() {
     return (
         <div>
              <Container maxWidth="m">
-            <Box sx={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Box sx={{ height: '100vh', display: 'flex', justifyContent: 'space-evenly', alignItems: 'center',flexDirection: 'column' }}>
                 <Typography variant="h1" gutterBottom>Login here</Typography>
                 
                 <div>
@@ -61,8 +61,10 @@ function Login() {
                             onChange={handleChange} 
                             value={formData.password} 
                         />
-
-                        <Button variant="contained" type='submit'>Submit</Button>
+                        <br /><br />
+                        <center>
+                            <Button variant="contained" type='submit'>Submit</Button>
+                        </center>
                     </form>
                 </div>
             </Box>

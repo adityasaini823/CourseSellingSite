@@ -47,7 +47,7 @@ function Signup() {
 
     return (
         <Container maxWidth="m">
-            <Box sx={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Box sx={{ height: '100vh', display: 'flex', justifyContent: 'space-evenly', alignItems: 'center',flexDirection: 'column' }}>
                 <Typography variant="h1" gutterBottom>Sign Up here</Typography>
                 
                 <div>
@@ -90,7 +90,7 @@ function Signup() {
                                 <MenuItem value={'Instructor'}>Instructor</MenuItem>
                                 <MenuItem value={'user'}>User</MenuItem>
                             </Select>
-                            <FormHelperText>Select your role</FormHelperText>
+                            
                         </FormControl>
 
                         <Typography gutterBottom>Username:</Typography>
@@ -115,8 +115,10 @@ function Signup() {
                             onChange={handleChange} 
                             value={formData.password} 
                         />
-
-                        <Button variant="contained" type='submit'>Submit</Button>
+                            <br /><br />
+                            <center>
+                                <Button variant="contained" type='submit'>Submit</Button>
+                            </center>
                     </form>
                 </div>
             </Box>
