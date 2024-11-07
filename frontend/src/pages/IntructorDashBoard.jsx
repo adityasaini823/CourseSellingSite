@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Settings from "./Settings";
 import {
   Box,
   CssBaseline,
@@ -18,6 +17,10 @@ import {
   Settings as SettingsIcon,
   ExitToApp as ExitToAppIcon,
 } from "@mui/icons-material";
+function Settings() {
+  return <div>HelloSettings</div>;
+}
+export default Settings;
 
 const drawerWidth = 240;
 
