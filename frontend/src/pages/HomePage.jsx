@@ -12,10 +12,7 @@ function  HomePage(){
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
             });
-            
-            console.log(response.data); // Log just the data part of the response
-            
-            // Optionally return the data if you need to use it elsewhere
+            console.log(response.data); 
             return response.data;
         } catch (error) {
             console.error("Error fetching data:", error.message);

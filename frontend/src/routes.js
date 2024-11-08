@@ -1,8 +1,8 @@
 import { lazy } from "react";
-import Signup from "./pages/Signup.jsx"
-import Login from "./pages/Login.jsx"
-import HomePage from "./pages/HomePage.jsx";
-import AdminDashboard from './pages/AdminDashboard.jsx'
+const Signup = lazy(() => import("./pages/Signup"));
+const Login = lazy(() => import("./pages/Login"));
+const HomePage = lazy(() => import("./pages/HomePage"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 
 export const adminRoutes=[
     {

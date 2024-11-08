@@ -7,7 +7,6 @@ const getAllCourses = async (req, res) => {
         const { user } = req;  // This will be available if verifyAuth runs and attaches user to req
         let courses;
         if (user) {
-          
             courses = await Course.find();
         } else {
             // Non-authenticated user: Fetch limited course details

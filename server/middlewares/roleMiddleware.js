@@ -2,8 +2,7 @@ const User=require('../models/User');
 
 // Admin Verification
 const isAdmin=(req,res,next)=>{
-    if(req.user.role=="superadmin"){
-        req.role="superadmin";
+    if(req.user.role=="admin"){
         next();
     }else{
         res.status(403).send({message:'Access Denied'});

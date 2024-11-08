@@ -3,14 +3,16 @@ import Login from "./pages/Login"
 import {Routes, Route} from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import InstructorDashBoard from "./pages/IntructorDashBoard";
-function App() {
+import  AdminDashboard  from "./pages/AdminDashboard";
 
+function App() {
 
   return (
 
      <Routes>
       <Route path="/signup" element={<Signup/>}/>
       <Route path="/login" element={<Login/>}/>
+      <Route path="/admins" element={<AdminDashboard/>}/>
       <Route path="/home" element={<HomePage/>}/>
       <Route path="/instructor" element={<InstructorDashBoard />} />
      </Routes>
